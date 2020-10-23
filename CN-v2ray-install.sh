@@ -119,7 +119,7 @@ systemctl enable v2ray.service
 systemctl start v2ray.service 
 cfgName=$(echo $PTH"_cfg.json")
 
-cat << EOF > ~/$cfgName 
+cat << EOF > $homeDir/$cfgName 
 {
 
   "dns": {
