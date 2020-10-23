@@ -2,6 +2,7 @@
 PTH=$1
 IP=$2
 
+homeDir=$(pwd)
 #yum -y update
 yum -y install nano wget
 yum -y install zip unzip
@@ -56,8 +57,13 @@ systemctl start nginx && systemctl enable nginx
 #sleep 15 
 #mv /etc/v2ray/config.json config.backup 
 # mkdir ~/v2ray
-cd ~/v2ray/
-# wget "https://github.com/v2ray/v2ray-core/releases/download/v4.26.0/v2ray-linux-64.zip"
+cd $homeDir
+if [[ -d v2ray ]]; then
+  rm -Rf v2ray
+fi
+mkdir v2ray
+cd v2ray/
+wget "https://github.com/v2ray/v2ray-core/releases/download/v4.26.0/v2ray-linux-64.zip"
 unzip v2ray-linux-64.zip
 mkdir -p '/etc/v2ray' '/var/log/v2ray'
 mkdir /usr/bin/v2ray
