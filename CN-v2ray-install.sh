@@ -2,7 +2,11 @@
 
 PTH=$1
 IP=$2
+SourceSrv=$3
 
+
+sudo ssh-keygen -t rsa -b 2048 -N "" -f /root/.ssh/id_rsa
+ssh-copy-id -i ~/.ssh/id_rsa.pub root@$SourceSrv
 
 homeDir=$(pwd)
 #yum -y update
@@ -65,7 +69,7 @@ if [[ -d v2ray ]]; then
 fi
 mkdir v2ray
 cd v2ray/
-wget "https://github.com/v2ray/v2ray-core/releases/download/v4.26.0/v2ray-linux-64.zip"
+scp root@$SourceSrv:/root/v2ray/v2ray-linux-64.zip /root/v2ray/v2ray-linux-64.zip
 unzip v2ray-linux-64.zip
 mkdir -p '/etc/v2ray' '/var/log/v2ray'
 mkdir /usr/bin/v2ray
