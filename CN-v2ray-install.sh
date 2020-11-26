@@ -272,6 +272,8 @@ cat << EOF > $homeDir/$cfgName
 }
 EOF
 
+ss -ntulp
+
 
 
 
